@@ -14,9 +14,9 @@ public class BookController extends Controller {
 
     private final BookRepository bookRepository = new BookRepository();
 
-    // ---------------------------
+
     // CREATE (POST /books)
-    // ---------------------------
+
     public Result addBook(Http.Request request) {
         try {
             JsonNode json = request.body().asJson();
@@ -41,9 +41,9 @@ public class BookController extends Controller {
         }
     }
 
-    // ---------------------------
+
     // READ ALL (GET /books)
-    // ---------------------------
+
     public Result getBooks() {
         try {
             List<Book> books = bookRepository.getAllBooks();
@@ -54,9 +54,9 @@ public class BookController extends Controller {
         }
     }
 
-    // ---------------------------
+
     // READ BY ID (GET /books/:id)
-    // ---------------------------
+
     public Result getBookById(Long id) {
         try {
             Book book = bookRepository.getBookById(id);
@@ -69,19 +69,19 @@ public class BookController extends Controller {
             return internalServerError("Error while fetching book: " + e.getMessage());
         }
     }
-    // ---------------------------
+
 // UPDATE (PUT /books/:id)
-// ---------------------------
+
     public Result updateBook(Http.Request request, Long id) {
         try {
-            // ✅ Log the raw body text (to debug Postman)
+            // Log the raw body text (to debug Postman)
             String rawBody = request.body().asText();
-            System.out.println("📦 Raw request body: " + rawBody);
+            System.out.println(" Raw request body: " + rawBody);
 
             JsonNode json = request.body().asJson();
 
-            // ✅ Also log the JSON node
-            System.out.println("📘 Parsed JSON: " + json);
+            // Also log the JSON node
+            System.out.println(" Parsed JSON: " + json);
 
             if (json == null) {
                 return badRequest("Invalid JSON or missing Content-Type: application/json");
@@ -101,9 +101,9 @@ public class BookController extends Controller {
         }
     }
 
-    // ---------------------------
+
     // DELETE (DELETE /books/:id)
-    // ---------------------------
+
     public Result deleteBook(Long id) {
         try {
             boolean deleted = bookRepository.deleteBook(id);

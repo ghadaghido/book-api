@@ -12,9 +12,9 @@ public class BookRepository {
     private static final EntityManagerFactory emf =
             Persistence.createEntityManagerFactory("bookPersistenceUnit");
 
-    // ---------------------------
+
     // CREATE (POST)
-    // ---------------------------
+
     public void addBook(Book book) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -31,9 +31,9 @@ public class BookRepository {
         }
     }
 
-    // ---------------------------
+
     // READ ALL (GET)
-    // ---------------------------
+
     public List<Book> getAllBooks() {
         EntityManager em = emf.createEntityManager();
         try {
@@ -43,9 +43,9 @@ public class BookRepository {
         }
     }
 
-    // ---------------------------
+
     // READ BY ID (GET /:id)
-    // ---------------------------
+
     public Book getBookById(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -55,9 +55,9 @@ public class BookRepository {
         }
     }
 
-    // ---------------------------
+
     // UPDATE (PUT /:id)
-    // ---------------------------
+
     public boolean updateBook(Long id, Book updatedBook) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -87,9 +87,9 @@ public class BookRepository {
         }
     }
 
-    // ---------------------------
+
     // DELETE (DELETE /:id)
-    // ---------------------------
+
     public boolean deleteBook(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
