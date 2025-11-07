@@ -1,0 +1,24 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Build files
+target/
+project/target/
+project/project/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# SBT
+.cache/
+.history/
+lib_managed/
+src_managed/
+dist/
+tmp/

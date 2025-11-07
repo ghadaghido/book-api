@@ -1,0 +1,9 @@
+# Books API
+POST    /books          controllers.BookController.addBook(request: Request)
+GET     /books          controllers.BookController.getBooks()
+GET     /books/:id      controllers.BookController.getBookById(id: Long)
+PUT     /books/:id      controllers.BookController.updateBook(request: Request, id: Long)
+DELETE  /books/:id      controllers.BookController.deleteBook(id: Long)
+
+# Static assets
+GET     /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
