@@ -20,6 +20,9 @@ lazy val root = (project in file("."))
       "org.playframework" %% "play-java-jpa" % "3.0.9",
 
       // JSON handling
-      "com.fasterxml.jackson.core" % "jackson-databind" % "2.14.3"
+      "com.fasterxml.jackson.core" % "jackson-databind" % "2.14.3",
+
+
+      "org.playframework" %% "play-test" % "3.0.9" % Test
     )
   )
