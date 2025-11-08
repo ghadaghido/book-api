@@ -22,7 +22,10 @@ lazy val root = (project in file("."))
       // JSON handling
       "com.fasterxml.jackson.core" % "jackson-databind" % "2.14.3",
 
+      // Swagger Annotations
+      "io.swagger.core.v3" % "swagger-annotations" % "2.2.15",
 
+      // Play Test
       "org.playframework" %% "play-test" % "3.0.9" % Test
     )
   )

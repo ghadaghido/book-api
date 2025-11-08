@@ -10,20 +10,26 @@ import repository.BookRepository;
 
 import java.util.List;
 
+/**
+ * This Controller for handling CRUD operations on Book entities
+ */
 public class BookController extends Controller {
 
+    // Repository instance to handle database logic
     private final BookRepository bookRepository = new BookRepository();
 
-
-    // CREATE (POST /books)
-
+    // ================================
+    // CREATE: Add a new book (POST /books)
+    // ================================
     public Result addBook(Http.Request request) {
         try {
+            // Parse JSON request body
             JsonNode json = request.body().asJson();
             if (json == null) {
                 return badRequest("Invalid JSON");
             }
 
+            // Convert JSON to Book object
             Book book = Json.fromJson(json, Book.class);
 
             // Validate required fields
@@ -32,6 +38,7 @@ public class BookController extends Controller {
                 return badRequest("Missing mandatory fields");
             }
 
+            // Save book to DB
             bookRepository.addBook(book);
             return created(Json.toJson(book));
 
@@ -42,7 +49,7 @@ public class BookController extends Controller {
     }
 
 
-    // READ ALL (GET /books)
+    // READ: Get all books (GET /books)
 
     public Result getBooks() {
         try {
@@ -55,7 +62,7 @@ public class BookController extends Controller {
     }
 
 
-    // READ BY ID (GET /books/:id)
+    // READ BY ID: Get a single book (GET /books/:id)
 
     public Result getBookById(Long id) {
         try {
@@ -70,23 +77,23 @@ public class BookController extends Controller {
         }
     }
 
-// UPDATE (PUT /books/:id)
+
+    // UPDATE: Update an existing book (PUT /books/:id)
 
     public Result updateBook(Http.Request request, Long id) {
         try {
-            // Log the raw body text (to debug Postman)
+            // Log raw request body (for debugging)
             String rawBody = request.body().asText();
-            System.out.println(" Raw request body: " + rawBody);
+            System.out.println("Raw request body: " + rawBody);
 
             JsonNode json = request.body().asJson();
-
-            // Also log the JSON node
-            System.out.println(" Parsed JSON: " + json);
+            System.out.println("Parsed JSON: " + json);
 
             if (json == null) {
                 return badRequest("Invalid JSON or missing Content-Type: application/json");
             }
 
+            // Convert and update book
             Book updatedBook = Json.fromJson(json, Book.class);
             boolean updated = bookRepository.updateBook(id, updatedBook);
 
@@ -101,13 +108,11 @@ public class BookController extends Controller {
         }
     }
 
-
-    // DELETE (DELETE /books/:id)
+    // DELETE: Delete a book (DELETE /books/:id)
 
     public Result deleteBook(Long id) {
         try {
             boolean deleted = bookRepository.deleteBook(id);
-
             if (!deleted) {
                 return notFound("Book not found for deletion with ID: " + id);
             }

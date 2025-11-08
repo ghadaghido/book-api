@@ -1,12 +1,22 @@
-# Home
-GET     /                   controllers.HomeController.index
 
-# Books API
-POST    /books              controllers.BookController.addBook(request: Request)
-GET     /books              controllers.BookController.getBooks()
-GET     /books/:id          controllers.BookController.getBookById(id: Long)
-PUT     /books/:id          controllers.BookController.updateBook(request: Request, id: Long)
-DELETE  /books/:id          controllers.BookController.deleteBook(id: Long)
+#Home Page
 
-# assets
-GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)
+GET     /                                  controllers.HomeController.index
+
+
+# Books API Endpoints
+
+POST    /books                             controllers.BookController.addBook(request: Request)
+GET     /books                             controllers.BookController.getBooks()
+GET     /books/:id                         controllers.BookController.getBookById(id: Long)
+PUT     /books/:id                         controllers.BookController.updateBook(request: Request, id: Long)
+DELETE  /books/:id                         controllers.BookController.deleteBook(id: Long)
+
+
+# Swagger UI Entry point
+GET  /docs                          controllers.Assets.versioned(path="/public/swagger.dist", file="index.html")
+GET  /swagger.dist/*file           controllers.Assets.versioned(path="/public/swagger.dist", file)
+GET  /assets/swagger.yaml          controllers.Assets.versioned(path="/public", file="swagger.yaml")
+
+# Default Assets
+GET     /assets/*file           controllers.Assets.versioned(path="/public", file)

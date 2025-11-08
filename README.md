@@ -36,11 +36,26 @@ A simple RESTful Book API built using the [Play Framework](https://www.playframe
 | DELETE | `/books/:id`       | Delete book by ID        |
 
 ---
+## 📘 API Documentation with Swagger
+
+Swagger UI is integrated to test and explore the REST API.
+
+### 🔗 Access Swagger UI
+
+Open the following URL in your browser:
+
+http://localhost:9000/docs
+
+
+This will open the Swagger interface where you can interact with your API endpoints.
+
+---
 
 ## Setup Instructions
 
-### 1. Clone the Repository
+### For Cloning the Repository
 
 ```bash
 git clone https://github.com/ghadaghido/book-api.git
 cd book-api
+
