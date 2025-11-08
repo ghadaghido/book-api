@@ -36,7 +36,7 @@ A simple RESTful Book API built using the [Play Framework](https://www.playframe
 | DELETE | `/books/:id`       | Delete book by ID        |
 
 ---
-## 📘 API Documentation with Swagger
+##  API Documentation with Swagger
 
 Swagger UI is integrated to test and explore the REST API.
 
